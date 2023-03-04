@@ -6,6 +6,11 @@ export const container = () => css`
   overflow-x: hidden;
 `;
 
+export const mediaItemPreviewer = () => css`
+  aspect-ratio: 16 / 9;
+  position: relative;
+`;
+
 export const itemListWrapper = () => css`
   display: grid;
   overflow-x: scroll;
@@ -21,6 +26,7 @@ export const itemList = () => css`
 `;
 
 export const item = () => css`
+  aspect-ratio: 1 / 1;
   height: 40px;
   width: 40px;
 `;

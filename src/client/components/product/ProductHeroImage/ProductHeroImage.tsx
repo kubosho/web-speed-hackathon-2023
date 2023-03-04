@@ -7,7 +7,6 @@ import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { Anchor } from '../../foundation/Anchor';
-import { AspectRatio } from '../../foundation/AspectRatio';
 import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { WidthRestriction } from '../../foundation/WidthRestriction';
 
@@ -63,9 +62,9 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
           <WidthRestriction>
             <Anchor href={`/product/${product.id}`}>
               <div className={styles.container()}>
-                <AspectRatio ratioHeight={9} ratioWidth={16}>
+                <div className={styles.imageContainer()}>
                   <img alt="" className={styles.image()} src={imageDataUrl} />
-                </AspectRatio>
+                </div>
 
                 <div className={styles.overlay()}>
                   <p

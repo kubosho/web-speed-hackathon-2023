@@ -47,6 +47,10 @@ export const thumbnail__desktop = () => css`
   width: 256px;
 `;
 
+export const imageContainer = () => css`
+  aspect-ratio: 16 / 9;
+`;
+
 export const offerLabel = () => css`
   left: 0;
   margin: 4px;

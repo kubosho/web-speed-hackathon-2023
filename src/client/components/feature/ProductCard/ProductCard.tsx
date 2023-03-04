@@ -4,7 +4,6 @@ import type { FC } from 'react';
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { Anchor } from '../../foundation/Anchor';
-import { AspectRatio } from '../../foundation/AspectRatio';
 import { Image } from '../../foundation/Image';
 import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
@@ -25,9 +24,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
       <div className={styles.inner()}>
         {thumbnailFile ? (
           <div className={styles.image()}>
-            <AspectRatio ratioHeight={9} ratioWidth={16}>
-              <Image height={126} src={thumbnailFile.filename} width={224} />
-            </AspectRatio>
+            <Image height={126} src={thumbnailFile.filename} width={224} />
           </div>
         ) : null}
         <div className={styles.description()}>

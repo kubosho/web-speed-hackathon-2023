@@ -12,6 +12,10 @@ export const container = () => css`
   }
 `;
 
+export const imageContainer = () => css`
+  aspect-ratio: 16 / 9;
+`;
+
 export const image = () => css`
   height: 100%;
   object-fit: cover;

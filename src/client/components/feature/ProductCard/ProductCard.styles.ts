@@ -15,6 +15,7 @@ export const label = () => css`
 `;
 
 export const image = () => css`
+  aspect-ratio: 16 / 9;
   border-radius: 8px;
   display: grid;
   overflow: hidden;
