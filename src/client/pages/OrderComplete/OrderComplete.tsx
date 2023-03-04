@@ -4,8 +4,6 @@ import { lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
-import { PrimaryAnchor } from '../../components/foundation/PrimaryAnchor';
-import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { useAuthUser } from '../../hooks/useAuthUser';
 import { useDeviceType } from '../../hooks/useDeviceType';
 import { useRecommendation } from '../../hooks/useRecommendation';
@@ -15,6 +13,8 @@ import * as styles from './OrderComplete.styles';
 
 const Layout = lazy(() => import('../../components/application/Layout'));
 const ProductHeroImage = lazy(() => import('../../components/product/ProductHeroImage'));
+const PrimaryAnchor = lazy(() => import('../../components/foundation/PrimaryAnchor'));
+const WidthRestriction = lazy(() => import('../../components/foundation/WidthRestriction'));
 
 export const OrderComplete: FC = () => {
   const navigate = useNavigate();

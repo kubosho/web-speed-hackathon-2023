@@ -1,1 +1,3 @@
-export * from './WidthRestriction';
+import { WidthRestriction } from './WidthRestriction';
+
+export default WidthRestriction;

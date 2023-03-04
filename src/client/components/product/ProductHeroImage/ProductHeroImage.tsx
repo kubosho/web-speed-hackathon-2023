@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import _ from 'lodash';
-import { memo } from 'react';
+import { lazy, memo } from 'react';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useDeviceType } from '../../../hooks/useDeviceType';
 import { DeviceType } from '../../../types/device_type';
 import { Anchor } from '../../foundation/Anchor';
-import { WidthRestriction } from '../../foundation/WidthRestriction';
+
+const WidthRestriction = lazy(() => import('../../foundation/WidthRestriction'));
 
 import * as styles from './ProductHeroImage.styles';
 

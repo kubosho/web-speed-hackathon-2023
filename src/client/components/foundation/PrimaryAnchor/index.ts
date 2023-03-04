@@ -1,1 +1,3 @@
-export * from './PrimaryAnchor';
+import { PrimaryAnchor } from './PrimaryAnchor';
+
+export default PrimaryAnchor;
