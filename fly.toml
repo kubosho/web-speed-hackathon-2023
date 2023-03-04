@@ -1,3 +1,6 @@
+# fly.toml file generated for web-speed-hackathon on 2023-03-04T10:58:05+09:00
+
+app = "web-speed-hackathon"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
