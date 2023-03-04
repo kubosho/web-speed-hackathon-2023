@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
-import { type ChangeEventHandler, type FC } from 'react';
-import zipcodeJa from 'zipcode-ja';
+import { type ChangeEventHandler, type FC, useCallback } from 'react';
 
+import { type ZipCodeJa } from '../../../types/zipcode_ja_type';
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
 
@@ -29,17 +29,21 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     onSubmit,
   });
 
-  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    formik.handleChange(event);
+  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = useCallback(
+    async (event) => {
+      formik.handleChange(event);
 
-    const zipCode = event.target.value;
-    const address = zipcodeJa[zipCode]?.address ?? [];
-    const prefecture = address.shift();
-    const city = address.join(' ');
+      const zipcodeJa: ZipCodeJa = await import('zipcode-ja');
+      const zipCode = event.target.value;
+      const address = zipcodeJa[zipCode]?.address ?? [];
+      const prefecture = address.shift();
+      const city = address.join(' ');
 
-    formik.setFieldValue('prefecture', prefecture);
-    formik.setFieldValue('city', city);
-  };
+      formik.setFieldValue('prefecture', prefecture);
+      formik.setFieldValue('city', city);
+    },
+    [formik],
+  );
 
   return (
     <div className={styles.container()}>
