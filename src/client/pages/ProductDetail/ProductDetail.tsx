@@ -3,10 +3,6 @@ import { lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
-import { ProductMediaListPreviewer } from '../../components/product/ProductMediaListPreviewer';
-import { ProductOverview } from '../../components/product/ProductOverview';
-import { ProductPurchaseSection } from '../../components/product/ProductPurchaseSeciton';
-import { ReviewSection } from '../../components/review/ReviewSection';
 import { useActiveOffer } from '../../hooks/useActiveOffer';
 import { useAmountInCart } from '../../hooks/useAmountInCart';
 import { useAuthUser } from '../../hooks/useAuthUser';
@@ -20,6 +16,10 @@ import { normalizeCartItemCount } from '../../utils/normalize_cart_item';
 import * as styles from './ProductDetail.styles';
 
 const Layout = lazy(() => import('../../components/application/Layout'));
+const ProductMediaListPreviewer = lazy(() => import('../../components/product/ProductMediaListPreviewer'));
+const ProductOverview = lazy(() => import('../../components/product/ProductOverview'));
+const ProductPurchaseSection = lazy(() => import('../../components/product/ProductPurchaseSeciton'));
+const ReviewSection = lazy(() => import('../../components/review/ReviewSection'));
 const WidthRestriction = lazy(() => import('../../components/foundation/WidthRestriction'));
 
 export const ProductDetail: FC = () => {

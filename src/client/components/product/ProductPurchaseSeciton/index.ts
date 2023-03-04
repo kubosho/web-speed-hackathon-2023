@@ -1,1 +1,3 @@
-export * from './ProductPurchaseSection';
+import { ProductPurchaseSection } from './ProductPurchaseSection';
+
+export default ProductPurchaseSection;

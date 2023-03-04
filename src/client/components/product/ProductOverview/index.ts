@@ -1,1 +1,3 @@
-export * from './ProductOverview';
+import { ProductOverview } from './ProductOverview';
+
+export default ProductOverview;
