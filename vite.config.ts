@@ -25,14 +25,13 @@ export default defineConfig(async () => {
     build: {
       assetsInlineLimit: 4096,
       cssCodeSplit: true,
-      cssTarget: 'es6',
       minify: false,
       rollupOptions: {
         output: {
           experimentalMinChunkSize: 40960,
         },
       },
-      target: 'es2015',
+      target: 'modules',
     },
     plugins: [
       react(),
