@@ -1,5 +1,5 @@
 import react from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
 
 export default defineConfig(async () => {
@@ -12,6 +12,7 @@ export default defineConfig(async () => {
     },
     plugins: [
       react(),
+      splitVendorChunkPlugin(),
       ViteEjsPlugin({
         module: '/src/client/index.tsx',
         title: '買えるオーガニック',
