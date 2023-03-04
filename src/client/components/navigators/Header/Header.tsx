@@ -1,12 +1,14 @@
 import type { FC } from 'react';
+import { lazy } from 'react';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
-import { Anchor } from '../../foundation/Anchor';
-import { Icon } from '../../foundation/Icon';
-import { Image } from '../../foundation/Image';
 
 import * as styles from './Header.styles';
+
+const Anchor = lazy(() => import('../../foundation/Anchor'));
+const Icon = lazy(() => import('../../foundation/Icon'));
+const Image = lazy(() => import('../../foundation/Image'));
 
 export const Header: FC = () => {
   const { isAuthUser } = useAuthUser();

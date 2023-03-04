@@ -1,16 +1,17 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 
-import { MediaItem } from './MediaItem';
-import { MediaItemPreviewer } from './MediaItemPreviewer';
 import * as styles from './ProductMediaListPreviewer.styles';
 
 type Props = {
   product: ProductFragmentResponse | undefined;
 };
+
+const MediaItem = lazy(() => import('./MediaItem'));
+const MediaItemPreviewer = lazy(() => import('./MediaItemPreviewer'));
 
 export const ProductMediaListPreviewer: FC<Props> = ({ product }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);

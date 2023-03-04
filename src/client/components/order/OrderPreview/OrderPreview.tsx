@@ -1,9 +1,8 @@
 import * as currencyFormatter from 'currency-formatter';
-import type { FC } from 'react';
+import { type FC, lazy } from 'react';
 
 import type { OrderFragmentResponse } from '../../../graphql/fragments';
 import { useTotalPrice } from '../../../hooks/useTotalPrice';
-import { CartItem } from '../CartItem';
 
 import * as styles from './OrderPreview.styles';
 
@@ -12,6 +11,8 @@ type Props = {
   onUpdateCartItem: (productId: number, amount: number) => void;
   onRemoveCartItem: (productId: number) => void;
 };
+
+const CartItem = lazy(() => import('../CartItem'));
 
 export const OrderPreview: FC<Props> = ({ onRemoveCartItem, onUpdateCartItem, order }) => {
   const { totalPrice } = useTotalPrice(order);

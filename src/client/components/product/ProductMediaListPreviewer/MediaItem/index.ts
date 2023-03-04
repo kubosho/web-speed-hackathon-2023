@@ -1,1 +1,3 @@
-export * from './MediaItem';
+import { MediaItem } from './MediaItem';
+
+export default MediaItem;

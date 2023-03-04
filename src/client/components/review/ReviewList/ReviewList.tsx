@@ -1,13 +1,14 @@
-import type { FC } from 'react';
+import { type FC, lazy } from 'react';
 
 import type { ReviewFragmentResponse } from '../../../graphql/fragments';
-import { Image } from '../../foundation/Image';
 
 import * as styles from './ReviewList.styles';
 
 type Props = {
   reviews: ReviewFragmentResponse[];
 };
+
+const Image = lazy(() => import('../../foundation/Image'));
 
 export const ReviewList: FC<Props> = ({ reviews }) => {
   if (reviews.length === 0) {

@@ -1,9 +1,7 @@
 import { useFormik } from 'formik';
-import { type ChangeEventHandler, type FC, useCallback } from 'react';
+import { type ChangeEventHandler, type FC, lazy, useCallback } from 'react';
 
 import { type ZipCodeJa } from '../../../types/zipcode_ja_type';
-import { PrimaryButton } from '../../foundation/PrimaryButton';
-import { TextInput } from '../../foundation/TextInput';
 
 import * as styles from './OrderForm.styles';
 
@@ -17,6 +15,9 @@ type OrderFormValue = {
 type Props = {
   onSubmit: (orderFormValue: OrderFormValue) => void;
 };
+
+const PrimaryButton = lazy(() => import('../../foundation/PrimaryButton'));
+const TextInput = lazy(() => import('../../foundation/TextInput'));
 
 export const OrderForm: FC<Props> = ({ onSubmit }) => {
   const formik = useFormik<OrderFormValue>({

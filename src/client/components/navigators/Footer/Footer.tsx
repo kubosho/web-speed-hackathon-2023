@@ -1,12 +1,13 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
+import { type FC, lazy } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { useDeviceType } from '../../../hooks/useDeviceType';
 import { DeviceType } from '../../../types/device_type';
-import { Image } from '../../foundation/Image';
 
 import * as styles from './Footer.styles';
+
+const Image = lazy(() => import('../../foundation/Image'));
 
 const FOOTER_LINK_ITEMS = ['利用規約', 'お問い合わせ', 'Q&A', '運営会社', 'オーガニックとは'] as const;
 

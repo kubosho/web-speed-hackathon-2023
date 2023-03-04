@@ -8,9 +8,6 @@ import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { useDeviceType } from '../../../hooks/useDeviceType';
 import { DeviceType } from '../../../types/device_type';
 import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
-import { Anchor } from '../../foundation/Anchor';
-import { Image } from '../../foundation/Image';
-import { OutlineButton } from '../../foundation/OutlineButton';
 
 import * as styles from './CartItem.styles';
 
@@ -20,6 +17,9 @@ type Props = {
   onRemove: (productId: number) => void;
 };
 
+const Anchor = lazy(() => import('../../foundation/Anchor'));
+const Image = lazy(() => import('../../foundation/Image'));
+const OutlineButton = lazy(() => import('../../foundation/OutlineButton'));
 const ProductOfferLabel = lazy(() => import('../../product/ProductOfferLabel'));
 
 export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {

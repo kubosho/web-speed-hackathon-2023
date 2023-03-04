@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
-
-import { Anchor } from '../Anchor';
+import { lazy } from 'react';
 
 import * as styles from './PrimaryAnchor.styles';
+
+const Anchor = lazy(() => import('../Anchor'));
 
 type Size = 'base' | 'lg';
 type Props = {

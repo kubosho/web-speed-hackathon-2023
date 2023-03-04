@@ -1,10 +1,11 @@
 import './polyfill/install';
 
-import { StrictMode } from 'react';
+import { lazy, StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 
-import { App } from './components/application/App';
 import { injectGlobalStyle } from './global.styles';
+
+const App = lazy(() => import('./components/application/App'));
 
 injectGlobalStyle();
 

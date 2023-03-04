@@ -1,1 +1,3 @@
-export * from './ProductGridList';
+import { ProductGridList } from './ProductGridList';
+
+export default ProductGridList;

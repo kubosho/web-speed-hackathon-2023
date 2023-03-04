@@ -1,14 +1,11 @@
 import type { FormikErrors } from 'formik';
 import { useFormik } from 'formik';
 import type { FC } from 'react';
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import * as z from 'zod';
 
 import { useSignIn } from '../../../hooks/useSignIn';
 import { useCloseModal, useIsOpenModal, useOpenModal } from '../../../store/modal';
-import { Modal } from '../../foundation/Modal';
-import { PrimaryButton } from '../../foundation/PrimaryButton';
-import { TextInput } from '../../foundation/TextInput';
 
 import * as styles from './SignInModal.styles';
 
@@ -24,6 +21,10 @@ export type SignInForm = {
   email: string;
   password: string;
 };
+
+const Modal = lazy(() => import('../../foundation/Modal'));
+const PrimaryButton = lazy(() => import('../../foundation/PrimaryButton'));
+const TextInput = lazy(() => import('../../foundation/TextInput'));
 
 export const SignInModal: FC = () => {
   const isOpened = useIsOpenModal('SIGN_IN');

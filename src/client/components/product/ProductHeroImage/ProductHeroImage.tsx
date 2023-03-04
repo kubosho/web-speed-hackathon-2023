@@ -5,11 +5,11 @@ import type { FC } from 'react';
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useDeviceType } from '../../../hooks/useDeviceType';
 import { DeviceType } from '../../../types/device_type';
-import { Anchor } from '../../foundation/Anchor';
-
-const WidthRestriction = lazy(() => import('../../foundation/WidthRestriction'));
 
 import * as styles from './ProductHeroImage.styles';
+
+const Anchor = lazy(() => import('../../foundation/Anchor'));
+const WidthRestriction = lazy(() => import('../../foundation/WidthRestriction'));
 
 type Props = {
   product: ProductFragmentResponse;

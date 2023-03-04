@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
-
-import { Icon } from '../../foundation/Icon';
+import { lazy } from 'react';
 
 import * as styles from './ProductListSlideButton.styles';
 
@@ -16,6 +15,8 @@ type Props = {
   disabled: boolean;
   onClick: () => void;
 };
+
+const Icon = lazy(() => import('../../foundation/Icon'));
 
 export const ProductListSlideButton: FC<Props> = ({ arrowType, disabled, onClick }) => {
   return (

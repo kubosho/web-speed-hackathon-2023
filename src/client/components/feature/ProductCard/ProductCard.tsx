@@ -4,8 +4,6 @@ import { lazy } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
-import { Anchor } from '../../foundation/Anchor';
-import { Image } from '../../foundation/Image';
 
 import * as styles from './ProductCard.styles';
 
@@ -13,6 +11,8 @@ type Props = {
   product: ProductFragmentResponse;
 };
 
+const Anchor = lazy(() => import('../../foundation/Anchor'));
+const Image = lazy(() => import('../../foundation/Image'));
 const ProductOfferLabel = lazy(() => import('../../product/ProductOfferLabel'));
 
 export const ProductCard: FC<Props> = ({ product }) => {

@@ -2,13 +2,8 @@ import type { FC } from 'react';
 import { lazy } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
-import { Icon } from '../../foundation/Icon';
-import { OutlineButton } from '../../foundation/OutlineButton';
-import { PrimaryButton } from '../../foundation/PrimaryButton';
 
 import * as styles from './ProductPurchaseSection.styles';
-
-const PrimaryAnchor = lazy(() => import('../../foundation/PrimaryAnchor'));
 
 type Props = {
   product: ProductFragmentResponse | undefined;
@@ -17,6 +12,11 @@ type Props = {
   onUpdateCartItem: (productId: number, count: number) => void;
   onOpenSignInModal: () => void;
 };
+
+const Icon = lazy(() => import('../../foundation/Icon'));
+const OutlineButton = lazy(() => import('../../foundation/OutlineButton'));
+const PrimaryAnchor = lazy(() => import('../../foundation/PrimaryAnchor'));
+const PrimaryButton = lazy(() => import('../../foundation/PrimaryButton'));
 
 export const ProductPurchaseSection: FC<Props> = ({
   amountInCart,

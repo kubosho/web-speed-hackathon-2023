@@ -1,1 +1,3 @@
-export * from './OutlineButton';
+import { OutlineButton } from './OutlineButton';
+
+export default OutlineButton;

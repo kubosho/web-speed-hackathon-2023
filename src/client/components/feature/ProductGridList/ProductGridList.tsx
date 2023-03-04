@@ -1,9 +1,11 @@
 import type { FC } from 'react';
+import { lazy } from 'react';
 
 import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
-import { ProductCard } from '../ProductCard';
 
 import * as styles from './ProductGridList.styles';
+
+const ProductCard = lazy(() => import('../ProductCard'));
 
 type Props = {
   featureSection: FeatureSectionFragmentResponse;
