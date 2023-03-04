@@ -8,7 +8,7 @@ export function useTotalPrice(order: OrderFragmentResponse) {
 
   useEffect(() => {
     let timer = (function tick() {
-      return setImmediate(() => {
+      return setTimeout(() => {
         let total = 0;
         for (const item of order.items) {
           const offer = getActiveOffer(item.product.offers);
@@ -21,7 +21,7 @@ export function useTotalPrice(order: OrderFragmentResponse) {
     })();
 
     return () => {
-      clearImmediate(timer);
+      clearTimeout(timer);
     };
   }, [order]);
 
