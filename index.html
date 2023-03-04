@@ -7,9 +7,6 @@
     <title><%= title %></title>
 
     <link rel="preconnect" href="/graphql" />
-    <% for (var href of videos) { %>
-    <link rel="preload" as="video" href="<%= href %>" />
-    <% } %>
 
     <script type="module" src="<%= module %>"></script>
   </head>
