@@ -1,8 +1,8 @@
 import * as currencyFormatter from 'currency-formatter';
 import type { FC } from 'react';
+import { lazy } from 'react';
 
 import type { LimitedTimeOfferFragmentResponse, ProductFragmentResponse } from '../../../graphql/fragments';
-import { ProductOfferLabel } from '../ProductOfferLabel';
 
 import * as styles from './ProductOverview.styles';
 
@@ -10,6 +10,8 @@ type Props = {
   product: ProductFragmentResponse | undefined;
   activeOffer: LimitedTimeOfferFragmentResponse | undefined;
 };
+
+const ProductOfferLabel = lazy(() => import('../ProductOfferLabel'));
 
 export const ProductOverview: FC<Props> = ({ activeOffer, product }) => {
   if (product === undefined) {

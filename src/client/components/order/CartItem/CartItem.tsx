@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as currencyFormatter from 'currency-formatter';
 import type { ChangeEventHandler, FC } from 'react';
+import { lazy } from 'react';
 
 import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
@@ -10,7 +11,6 @@ import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
 import { Anchor } from '../../foundation/Anchor';
 import { Image } from '../../foundation/Image';
 import { OutlineButton } from '../../foundation/OutlineButton';
-import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
 import * as styles from './CartItem.styles';
 
@@ -19,6 +19,8 @@ type Props = {
   onUpdate: (productId: number, count: number) => void;
   onRemove: (productId: number) => void;
 };
+
+const ProductOfferLabel = lazy(() => import('../../product/ProductOfferLabel'));
 
 export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
   const thumbnailFile = item.product.media.find((productMedia) => productMedia.isThumbnail)?.file;

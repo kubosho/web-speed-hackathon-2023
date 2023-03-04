@@ -1,1 +1,3 @@
-export * from './ProductOfferLabel';
+import { ProductOfferLabel } from './ProductOfferLabel';
+
+export default ProductOfferLabel;

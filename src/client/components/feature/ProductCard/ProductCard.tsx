@@ -1,17 +1,19 @@
 import * as currencyFormatter from 'currency-formatter';
 import type { FC } from 'react';
+import { lazy } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
 import { Anchor } from '../../foundation/Anchor';
 import { Image } from '../../foundation/Image';
-import { ProductOfferLabel } from '../../product/ProductOfferLabel';
 
 import * as styles from './ProductCard.styles';
 
 type Props = {
   product: ProductFragmentResponse;
 };
+
+const ProductOfferLabel = lazy(() => import('../../product/ProductOfferLabel'));
 
 export const ProductCard: FC<Props> = ({ product }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
