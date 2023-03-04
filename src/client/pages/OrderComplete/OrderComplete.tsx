@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
-import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,26 +11,19 @@ import { useAuthUser } from '../../hooks/useAuthUser';
 import { useDeviceType } from '../../hooks/useDeviceType';
 import { useRecommendation } from '../../hooks/useRecommendation';
 import { DeviceType } from '../../types/device_type';
-import { loadFonts } from '../../utils/load_fonts';
 
 import * as styles from './OrderComplete.styles';
 
 export const OrderComplete: FC = () => {
   const navigate = useNavigate();
-  const [isReadyFont, setIsReadyFont] = useState(false);
   const { authUserLoading, isAuthUser } = useAuthUser();
   const { recommendation } = useRecommendation();
   const deviceType = useDeviceType();
 
-  useEffect(() => {
-    loadFonts().then(() => {
-      setIsReadyFont(true);
-    });
-  }, []);
-
-  if (!recommendation || !isReadyFont || authUserLoading) {
+  if (!recommendation || authUserLoading) {
     return null;
   }
+
   if (!isAuthUser) {
     navigate('/');
     return null;
@@ -41,6 +33,12 @@ export const OrderComplete: FC = () => {
     <>
       <Helmet>
         <title>購入が完了しました</title>
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=fallback&text=このサイトは架空のサイトであり、商品が発送されることはありません"
+          rel="stylesheet"
+        />
       </Helmet>
       <Layout>
         <WidthRestriction>
