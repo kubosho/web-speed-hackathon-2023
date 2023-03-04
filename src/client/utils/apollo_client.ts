@@ -1,21 +1,33 @@
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache, type NormalizedCacheObject } from '@apollo/client';
 
-const link = new HttpLink();
+let apolloClient: ApolloClient<NormalizedCacheObject> | null = null;
 
-export const apolloClient = new ApolloClient({
-  cache: new InMemoryCache(),
-  defaultOptions: {
-    mutate: {
-      fetchPolicy: 'network-only',
+export function createApolloClient(): ApolloClient<NormalizedCacheObject> {
+  if (apolloClient !== null) {
+    return apolloClient;
+  }
+
+  const link = new HttpLink();
+  const cache = new InMemoryCache();
+  const client = new ApolloClient({
+    cache,
+    defaultOptions: {
+      mutate: {
+        fetchPolicy: 'network-only',
+      },
+      query: {
+        fetchPolicy: 'network-only',
+      },
+      watchQuery: {
+        fetchPolicy: 'network-only',
+      },
     },
-    query: {
-      fetchPolicy: 'network-only',
-    },
-    watchQuery: {
-      fetchPolicy: 'network-only',
-    },
-  },
-  link,
-  queryDeduplication: true,
-  uri: '/graphql',
-});
+    link,
+    queryDeduplication: true,
+    uri: '/graphql',
+  });
+
+  apolloClient = client;
+
+  return client;
+}
