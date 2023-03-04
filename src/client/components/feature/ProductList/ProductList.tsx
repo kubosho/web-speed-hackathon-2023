@@ -1,6 +1,4 @@
-import _ from 'lodash';
 import type { FC } from 'react';
-import { memo } from 'react';
 
 import type { FeatureSectionFragmentResponse } from '../../../graphql/fragments';
 import { useDeviceType } from '../../../hooks/useDeviceType';
@@ -12,7 +10,7 @@ type Props = {
   featureSection: FeatureSectionFragmentResponse;
 };
 
-export const ProductList: FC<Props> = memo(({ featureSection }) => {
+export const ProductList: FC<Props> = ({ featureSection }) => {
   const deviceType = useDeviceType();
 
   switch (deviceType) {
@@ -23,6 +21,6 @@ export const ProductList: FC<Props> = memo(({ featureSection }) => {
       return <ProductGridList featureSection={featureSection} />;
     }
   }
-}, _.isEqual);
+};
 
 ProductList.displayName = 'ProductList';
