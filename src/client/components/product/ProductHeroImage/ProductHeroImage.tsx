@@ -6,8 +6,9 @@ import { memo, useEffect, useState } from 'react';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
+import { useDeviceType } from '../../../hooks/useDeviceType';
+import { DeviceType } from '../../../types/device_type';
 import { Anchor } from '../../foundation/Anchor';
-import { DeviceType, GetDeviceType } from '../../foundation/GetDeviceType';
 import { WidthRestriction } from '../../foundation/WidthRestriction';
 
 import * as styles from './ProductHeroImage.styles';
@@ -44,6 +45,8 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
 
   const [imageDataUrl, setImageDataUrl] = useState<string>();
 
+  const deviceType = useDeviceType();
+
   useEffect(() => {
     if (thumbnailFile == null) {
       return;
@@ -56,40 +59,34 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
   }
 
   return (
-    <GetDeviceType>
-      {({ deviceType }) => {
-        return (
-          <WidthRestriction>
-            <Anchor href={`/product/${product.id}`}>
-              <div className={styles.container()}>
-                <div className={styles.imageContainer()}>
-                  <img alt="" className={styles.image()} src={imageDataUrl} />
-                </div>
+    <WidthRestriction>
+      <Anchor href={`/product/${product.id}`}>
+        <div className={styles.container()}>
+          <div className={styles.imageContainer()}>
+            <img alt="" className={styles.image()} src={imageDataUrl} />
+          </div>
 
-                <div className={styles.overlay()}>
-                  <p
-                    className={classNames(styles.title(), {
-                      [styles.title__desktop()]: deviceType === DeviceType.DESKTOP,
-                      [styles.title__mobile()]: deviceType === DeviceType.MOBILE,
-                    })}
-                  >
-                    {title}
-                  </p>
-                  <p
-                    className={classNames(styles.description(), {
-                      [styles.description__desktop()]: deviceType === DeviceType.DESKTOP,
-                      [styles.description__mobile()]: deviceType === DeviceType.MOBILE,
-                    })}
-                  >
-                    {product.name}
-                  </p>
-                </div>
-              </div>
-            </Anchor>
-          </WidthRestriction>
-        );
-      }}
-    </GetDeviceType>
+          <div className={styles.overlay()}>
+            <p
+              className={classNames(styles.title(), {
+                [styles.title__desktop()]: deviceType === DeviceType.DESKTOP,
+                [styles.title__mobile()]: deviceType === DeviceType.MOBILE,
+              })}
+            >
+              {title}
+            </p>
+            <p
+              className={classNames(styles.description(), {
+                [styles.description__desktop()]: deviceType === DeviceType.DESKTOP,
+                [styles.description__mobile()]: deviceType === DeviceType.MOBILE,
+              })}
+            >
+              {product.name}
+            </p>
+          </div>
+        </div>
+      </Anchor>
+    </WidthRestriction>
   );
 }, _.isEqual);
 
