@@ -5,8 +5,6 @@ import { lazy } from 'react';
 
 import type { ShoppingCartItemFragmentResponse } from '../../../graphql/fragments';
 import { useActiveOffer } from '../../../hooks/useActiveOffer';
-import { useDeviceType } from '../../../hooks/useDeviceType';
-import { DeviceType } from '../../../types/device_type';
 import { normalizeCartItemCount } from '../../../utils/normalize_cart_item';
 
 import * as styles from './CartItem.styles';
@@ -25,7 +23,6 @@ const ProductOfferLabel = lazy(() => import('../../product/ProductOfferLabel'));
 export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
   const thumbnailFile = item.product.media.find((productMedia) => productMedia.isThumbnail)?.file;
   const { activeOffer } = useActiveOffer(item.product);
-  const deviceType = useDeviceType();
   const price = activeOffer?.price ?? item.product.price;
 
   const updateCount: ChangeEventHandler<HTMLInputElement> = (ev) => {
@@ -34,22 +31,12 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
   };
 
   return (
-    <div
-      className={classNames(styles.container(), {
-        [styles.container__desktop()]: deviceType === DeviceType.DESKTOP,
-        [styles.container__mobile()]: deviceType === DeviceType.MOBILE,
-      })}
-    >
+    <div className={classNames(styles.container())}>
       <div className={styles.item()}>
         <Anchor href={`/product/${item.product.id}`}>
           <div className={styles.itemInner()}>
             {thumbnailFile ? (
-              <div
-                className={classNames(styles.thumbnail(), {
-                  [styles.thumbnail__desktop()]: deviceType === DeviceType.DESKTOP,
-                  [styles.thumbnail__mobile()]: deviceType === DeviceType.MOBILE,
-                })}
-              >
+              <div className={classNames(styles.thumbnail())}>
                 <div className={styles.imageContainer()}>
                   <Image fill src={thumbnailFile.filename} />
                 </div>
@@ -67,12 +54,7 @@ export const CartItem: FC<Props> = ({ item, onRemove, onUpdate }) => {
           </div>
         </Anchor>
       </div>
-      <div
-        className={classNames(styles.container(), {
-          [styles.controller__desktop()]: deviceType === DeviceType.DESKTOP,
-          [styles.controller__mobile()]: deviceType === DeviceType.MOBILE,
-        })}
-      >
+      <div className={classNames(styles.container())}>
         <label className={styles.counter()}>
           個数:
           <input

@@ -3,8 +3,6 @@ import { lazy } from 'react';
 import type { FC } from 'react';
 
 import type { ProductFragmentResponse } from '../../../graphql/fragments';
-import { useDeviceType } from '../../../hooks/useDeviceType';
-import { DeviceType } from '../../../types/device_type';
 
 import * as styles from './ProductHeroImage.styles';
 
@@ -17,8 +15,6 @@ type Props = {
 };
 
 export const ProductHeroImage: FC<Props> = ({ product, title }) => {
-  const deviceType = useDeviceType();
-
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
   if (thumbnailFile?.filename === undefined) {
     return null;
@@ -33,22 +29,8 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
           </div>
 
           <div className={styles.overlay()}>
-            <p
-              className={classNames(styles.title(), {
-                [styles.title__desktop()]: deviceType === DeviceType.DESKTOP,
-                [styles.title__mobile()]: deviceType === DeviceType.MOBILE,
-              })}
-            >
-              {title}
-            </p>
-            <p
-              className={classNames(styles.description(), {
-                [styles.description__desktop()]: deviceType === DeviceType.DESKTOP,
-                [styles.description__mobile()]: deviceType === DeviceType.MOBILE,
-              })}
-            >
-              {product.name}
-            </p>
+            <p className={classNames(styles.title())}>{title}</p>
+            <p className={classNames(styles.description())}>{product.name}</p>
           </div>
         </div>
       </Anchor>

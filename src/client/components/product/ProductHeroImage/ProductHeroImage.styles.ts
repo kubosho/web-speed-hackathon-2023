@@ -38,27 +38,21 @@ export const overlay = () => css`
 
 export const title = () => css`
   color: #ffffff;
+  font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: 1px;
-`;
 
-export const title__desktop = () => css`
-  font-size: 1.5rem;
-`;
-
-export const title__mobile = () => css`
-  font-size: 1.125rem;
+  @media (min-width: 1024px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const description = () => css`
   color: #ffffff;
-  margin-top: 8px;
-`;
-
-export const description__desktop = () => css`
-  font-size: 1rem;
-`;
-
-export const description__mobile = () => css`
   font-size: 0.875rem;
+  margin-top: 8px;
+
+  @media (min-width: 1024px) {
+    font-size: 1rem;
+  }
 `;

@@ -2,16 +2,13 @@ import { css } from '@emotion/css';
 
 export const container = () => css`
   display: flex;
-`;
-
-export const container__mobile = () => css`
   flex-direction: column;
   gap: 4px;
-`;
 
-export const container__desktop = () => css`
-  flex-direction: row;
-  gap: 8px;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 8px;
+  }
 `;
 
 export const item = () => css`
@@ -37,14 +34,11 @@ export const thumbnail = () => css`
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-`;
-
-export const thumbnail__mobile = () => css`
   width: 50%;
-`;
 
-export const thumbnail__desktop = () => css`
-  width: 256px;
+  @media (min-width: 1024px) {
+    width: 256px;
+  }
 `;
 
 export const imageContainer = () => css`
@@ -83,22 +77,15 @@ export const itemPrice = () => css`
 export const controller = () => css`
   align-items: center;
   display: flex;
-  gap: 16px;
-  padding: 4px 8px;
-`;
-
-export const controller__desktop = () => css`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: flex-start;
-`;
-
-export const controller__mobile = () => css`
-  display: flex;
   flex-direction: row;
   gap: 4px;
   justify-content: flex-end;
+  padding: 4px 8px;
+
+  @media (min-width: 1024px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 `;
 
 export const counter = () => css`

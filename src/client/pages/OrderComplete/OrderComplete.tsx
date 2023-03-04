@@ -5,9 +5,7 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuthUser } from '../../hooks/useAuthUser';
-import { useDeviceType } from '../../hooks/useDeviceType';
 import { useRecommendation } from '../../hooks/useRecommendation';
-import { DeviceType } from '../../types/device_type';
 
 import * as styles from './OrderComplete.styles';
 
@@ -20,7 +18,6 @@ export const OrderComplete: FC = () => {
   const navigate = useNavigate();
   const { authUserLoading, isAuthUser } = useAuthUser();
   const { recommendation } = useRecommendation();
-  const deviceType = useDeviceType();
 
   if (!recommendation || authUserLoading) {
     return null;
@@ -48,12 +45,7 @@ export const OrderComplete: FC = () => {
             <div className={styles.notice()}>
               <h2 className={styles.noticeHeading()}>購入が完了しました</h2>
               <div className={styles.noticeDescriptionWrapper()}>
-                <p
-                  className={classNames(styles.noticeDescription(), {
-                    [styles.noticeDescription__desktop()]: deviceType === DeviceType.DESKTOP,
-                    [styles.noticeDescription__mobile()]: deviceType === DeviceType.MOBILE,
-                  })}
-                >
+                <p className={classNames(styles.noticeDescription())}>
                   このサイトは架空のサイトであり、商品が発送されることはありません
                 </p>
               </div>
