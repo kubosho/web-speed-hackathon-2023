@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 
 import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginLandingPageDisabled } from '@apollo/server/plugin/disabled';
 
 import type { Context } from '../context';
 import { rootResolve } from '../utils/root_resolve';
@@ -39,6 +40,7 @@ export async function initializeApolloServer(): Promise<ApolloServer<Context>> {
   );
 
   const server = new ApolloServer({
+    plugins: [ApolloServerPluginLandingPageDisabled()],
     resolvers: {
       FeatureItem: featureItemResolver,
       FeatureSection: featureSectionResolver,
