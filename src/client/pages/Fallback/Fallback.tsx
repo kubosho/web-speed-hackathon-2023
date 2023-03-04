@@ -1,9 +1,10 @@
 import type { FC } from 'react';
+import { lazy } from 'react';
 import { Helmet } from 'react-helmet';
 
-import { Layout } from '../../components/application/Layout';
-
 import * as styles from './Fallback.styles';
+
+const Layout = lazy(() => import('../../components/application/Layout'));
 
 export const Fallback: FC = () => (
   <>

@@ -1,18 +1,20 @@
 import classNames from 'classnames';
 import type { FC } from 'react';
+import { lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
-import { Layout } from '../../components/application/Layout';
 import { PrimaryAnchor } from '../../components/foundation/PrimaryAnchor';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
-import { ProductHeroImage } from '../../components/product/ProductHeroImage';
 import { useAuthUser } from '../../hooks/useAuthUser';
 import { useDeviceType } from '../../hooks/useDeviceType';
 import { useRecommendation } from '../../hooks/useRecommendation';
 import { DeviceType } from '../../types/device_type';
 
 import * as styles from './OrderComplete.styles';
+
+const Layout = lazy(() => import('../../components/application/Layout'));
+const ProductHeroImage = lazy(() => import('../../components/product/ProductHeroImage'));
 
 export const OrderComplete: FC = () => {
   const navigate = useNavigate();

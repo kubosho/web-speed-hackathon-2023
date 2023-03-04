@@ -1,13 +1,15 @@
 import type { FC } from 'react';
+import { lazy } from 'react';
 import { Helmet } from 'react-helmet';
 
-import { Layout } from '../../components/application/Layout';
-import { ProductList } from '../../components/feature/ProductList';
-import { ProductHeroImage } from '../../components/product/ProductHeroImage';
 import { useFeatures } from '../../hooks/useFeatures';
 import { useRecommendation } from '../../hooks/useRecommendation';
 
 import * as styles from './Top.styles';
+
+const Layout = lazy(() => import('../../components/application/Layout'));
+const ProductList = lazy(() => import('../../components/feature/ProductList'));
+const ProductHeroImage = lazy(() => import('../../components/product/ProductHeroImage'));
 
 export const Top: FC = () => {
   const { recommendation } = useRecommendation();

@@ -1,8 +1,8 @@
 import type { FC } from 'react';
+import { lazy } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 
-import { Layout } from '../../components/application/Layout';
 import { WidthRestriction } from '../../components/foundation/WidthRestriction';
 import { ProductMediaListPreviewer } from '../../components/product/ProductMediaListPreviewer';
 import { ProductOverview } from '../../components/product/ProductOverview';
@@ -19,6 +19,8 @@ import { useOpenModal } from '../../store/modal';
 import { normalizeCartItemCount } from '../../utils/normalize_cart_item';
 
 import * as styles from './ProductDetail.styles';
+
+const Layout = lazy(() => import('../../components/application/Layout'));
 
 export const ProductDetail: FC = () => {
   const { productId } = useParams();
