@@ -29,7 +29,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
       <Anchor href={`/product/${product.id}`}>
         <div className={styles.container()}>
           <div className={styles.imageContainer()}>
-            <img alt="" className={styles.image()} src={thumbnailFile?.filename} />
+            <img alt="" className={styles.image()} loading="eager" src={thumbnailFile?.filename} />
           </div>
 
           <div className={styles.overlay()}>
