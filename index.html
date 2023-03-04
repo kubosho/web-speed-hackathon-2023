@@ -6,6 +6,7 @@
     <meta name="robots" content="noindex" />
     <title><%= title %></title>
 
+    <link rel="preconnect" href="/graphql" />
     <% for (var href of videos) { %>
     <link rel="preload" as="video" fetchPriority="high" href="<%= href %>" />
     <% } %>
