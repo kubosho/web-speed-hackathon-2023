@@ -7,7 +7,7 @@ type FontFaceSource = {
 const FONT_FACE_SOURCES: FontFaceSource[] = [
   {
     descripter: {
-      display: 'block',
+      display: 'fallback',
       style: 'normal',
       weight: '700',
     },
@@ -16,7 +16,7 @@ const FONT_FACE_SOURCES: FontFaceSource[] = [
   },
   {
     descripter: {
-      display: 'block',
+      display: 'fallback',
       style: 'normal',
       weight: '400',
     },
