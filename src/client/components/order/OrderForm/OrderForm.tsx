@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
-import { type ChangeEventHandler, type FC, lazy, useCallback } from 'react';
+import { type FC, lazy, useEffect } from 'react';
 
-import { type ZipCodeJa } from '../../../types/zipcode_ja_type';
+import { useZipcode } from '../../../hooks/useZipcode';
 
 import * as styles from './OrderForm.styles';
 
@@ -29,22 +29,20 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     },
     onSubmit,
   });
+  const zipcode = useZipcode(formik.values.zipCode);
 
-  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = useCallback(
-    async (event) => {
-      formik.handleChange(event);
+  useEffect(() => {
+    if (zipcode == null) {
+      return;
+    }
 
-      const zipcodeJa: ZipCodeJa = await import('zipcode-ja');
-      const zipCode = event.target.value;
-      const address = zipcodeJa[zipCode]?.address ?? [];
-      const prefecture = address.shift();
-      const city = address.join(' ');
+    const address = [...zipcode.address];
+    const prefecture = address.shift();
+    const city = address.join(' ');
 
-      formik.setFieldValue('prefecture', prefecture);
-      formik.setFieldValue('city', city);
-    },
-    [formik],
-  );
+    formik.setFieldValue('prefecture', prefecture);
+    formik.setFieldValue('city', city);
+  }, [formik, zipcode]);
 
   return (
     <div className={styles.container()}>
@@ -54,7 +52,7 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
             required
             id="zipCode"
             label="郵便番号"
-            onChange={handleZipcodeChange}
+            onChange={formik.handleChange}
             placeholder="例: 1500042"
             value={formik.values.zipCode}
           />
