@@ -11,6 +11,7 @@ export function createApolloClient(): ApolloClient<NormalizedCacheObject> {
   const cache = new InMemoryCache();
   const client = new ApolloClient({
     cache,
+    connectToDevTools: true,
     link,
     queryDeduplication: true,
     uri: '/graphql',
