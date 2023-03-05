@@ -75,12 +75,10 @@ export const itemPrice = () => css`
 `;
 
 export const controller = () => css`
-  align-items: center;
   display: flex;
   flex-direction: row;
   gap: 4px;
   justify-content: flex-end;
-  padding: 4px 8px;
 
   @media (min-width: 1024px) {
     flex-direction: column;
