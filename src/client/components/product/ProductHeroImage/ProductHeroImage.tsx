@@ -7,6 +7,7 @@ import type { ProductFragmentResponse } from '../../../graphql/fragments';
 import * as styles from './ProductHeroImage.styles';
 
 const Anchor = lazy(() => import('../../foundation/Anchor'));
+const Image = lazy(() => import('../../foundation/Image'));
 const WidthRestriction = lazy(() => import('../../foundation/WidthRestriction'));
 
 type Props = {
@@ -25,7 +26,14 @@ export const ProductHeroImage: FC<Props> = ({ product, title }) => {
       <Anchor href={`/product/${product.id}`}>
         <div className={styles.container()}>
           <div className={styles.imageContainer()}>
-            <img alt="" className={styles.image()} loading="eager" src={thumbnailFile?.filename} />
+            <Image
+              alt=""
+              className={styles.image()}
+              height={576}
+              loading="eager"
+              src={thumbnailFile?.filename}
+              width={1024}
+            />
           </div>
 
           <div className={styles.overlay()}>
