@@ -3,7 +3,7 @@ import type { ComponentProps, FC } from 'react';
 
 import * as styles from './Image.styles';
 
-type Props = Omit<ComponentProps<'img'>, 'className'> & {
+type Props = ComponentProps<'img'> & {
   fill?: boolean;
 };
 

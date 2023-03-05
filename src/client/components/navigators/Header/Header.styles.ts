@@ -12,6 +12,11 @@ export const logo = () => css`
   display: flex;
 `;
 
+export const logoImage = () => css`
+  height: auto;
+  max-width: 100%;
+`;
+
 export const orderLink = () => css`
   display: flex;
   padding: 4px;
