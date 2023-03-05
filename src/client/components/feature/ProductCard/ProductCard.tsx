@@ -18,7 +18,7 @@ const ProductOfferLabel = lazy(() => import('../../product/ProductOfferLabel'));
 export const ProductCard: FC<Props> = ({ product }) => {
   const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
-  const { activeOffer } = useActiveOffer(product);
+  const { activeOffer } = useActiveOffer(product.offers);
   const price = activeOffer?.price ?? product.price;
 
   return (
