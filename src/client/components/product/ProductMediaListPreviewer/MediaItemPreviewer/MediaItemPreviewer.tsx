@@ -17,7 +17,7 @@ export const MediaItemPreviewer: FC<Props> = ({ file }) => {
 
   return (
     <div className={styles.container()}>
-      {type === 'image' && <Image fill src={file.filename} />}
+      {type === 'image' && <Image alt="" fill={true} height={576} src={file.filename} width={1024} />}
       {type === 'video' && (
         <video autoPlay controls muted playsInline className={classNames(styles.video())} src={file.filename} />
       )}
