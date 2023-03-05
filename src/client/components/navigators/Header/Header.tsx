@@ -1,5 +1,4 @@
-import type { FC } from 'react';
-import { lazy } from 'react';
+import { type FC, lazy, useCallback } from 'react';
 
 import { useAuthUser } from '../../../hooks/useAuthUser';
 import { useOpenModal } from '../../../store/modal';
@@ -13,6 +12,10 @@ const Image = lazy(() => import('../../foundation/Image'));
 export const Header: FC = () => {
   const { isAuthUser } = useAuthUser();
   const handleOpenModal = useOpenModal();
+
+  const onClickSignInButton = useCallback(() => {
+    handleOpenModal('SIGN_IN');
+  }, [handleOpenModal]);
 
   return (
     <header className={styles.container()}>
@@ -34,11 +37,7 @@ export const Header: FC = () => {
           </div>
         </Anchor>
       ) : (
-        <button
-          className={styles.signInButton()}
-          data-testid="navigate-signin"
-          onClick={() => handleOpenModal('SIGN_IN')}
-        >
+        <button className={styles.signInButton()} data-testid="navigate-signin" onClick={onClickSignInButton}>
           <Icon color="#222222" height={20} type="FaUser" width={20} />
         </button>
       )}
