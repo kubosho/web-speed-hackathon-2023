@@ -78,7 +78,6 @@ specifiers:
   vite: 4.1.4
   vite-plugin-ejs: 1.6.4
   zipcode-ja: 0.0.7
-  zod: 3.20.6
 
 dependencies:
   '@apollo/client': 3.8.0-alpha.7_gdcq4dv6opitr3wbfwyjmanyra
@@ -115,7 +114,6 @@ dependencies:
   sqlite3: 5.1.4
   typeorm: 0.3.11_h3l5zcb3i6sggvllyfknv6gs44
   zipcode-ja: 0.0.7
-  zod: 3.20.6
 
 devDependencies:
   '@babel/core': 7.20.5
@@ -6353,8 +6351,4 @@ packages:
 
   /zipcode-ja/0.0.7:
     resolution: {integrity: sha512-DJw7EUtu8aCwBrtlDwD/y2owHlkgNDmuC981eDz9EadDd/7/YofvFveImE+nFij0ftVQnZasyrAmW/HC6oIMcA==}
-    dev: false
-
-  /zod/3.20.6:
-    resolution: {integrity: sha512-oyu0m54SGCtzh6EClBVqDDlAYRz4jrVtKwQ7ZnsEmMI9HnzuZFj8QFwAY1M5uniIYACdGvv0PBWPF2kO0aNofA==}
     dev: false
