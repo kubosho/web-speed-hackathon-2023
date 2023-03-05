@@ -11,17 +11,6 @@ export function createApolloClient(): ApolloClient<NormalizedCacheObject> {
   const cache = new InMemoryCache();
   const client = new ApolloClient({
     cache,
-    defaultOptions: {
-      mutate: {
-        fetchPolicy: 'network-only',
-      },
-      query: {
-        fetchPolicy: 'network-only',
-      },
-      watchQuery: {
-        fetchPolicy: 'network-only',
-      },
-    },
     link,
     queryDeduplication: true,
     uri: '/graphql',
