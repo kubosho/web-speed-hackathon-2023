@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import { lazy } from 'react';
 import type { FC } from 'react';
 
-import type { ProductFragmentResponse } from '../../../graphql/fragments';
-
 import * as styles from './ProductHeroImage.styles';
 
 const Anchor = lazy(() => import('../../foundation/Anchor'));
@@ -11,34 +9,24 @@ const Image = lazy(() => import('../../foundation/Image'));
 const WidthRestriction = lazy(() => import('../../foundation/WidthRestriction'));
 
 type Props = {
-  product: ProductFragmentResponse;
+  productId: number;
+  productName: string;
+  imageFileName: string;
   title: string;
 };
 
-export const ProductHeroImage: FC<Props> = ({ product, title }) => {
-  const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
-  if (thumbnailFile?.filename === undefined) {
-    return null;
-  }
-
+export const ProductHeroImage: FC<Props> = ({ imageFileName, productId, productName, title }) => {
   return (
     <WidthRestriction>
-      <Anchor href={`/product/${product.id}`}>
+      <Anchor href={`/product/${productId}`}>
         <div className={styles.container()}>
           <div className={styles.imageContainer()}>
-            <Image
-              alt=""
-              className={styles.image()}
-              height={576}
-              loading="eager"
-              src={thumbnailFile?.filename}
-              width={1024}
-            />
+            <Image alt="" className={styles.image()} height={576} loading="eager" src={imageFileName} width={1024} />
           </div>
 
           <div className={styles.overlay()}>
             <p className={classNames(styles.title())}>{title}</p>
-            <p className={classNames(styles.description())}>{product.name}</p>
+            <p className={classNames(styles.description())}>{productName}</p>
           </div>
         </div>
       </Anchor>

@@ -19,6 +19,10 @@ export const Top: FC = () => {
     return null;
   }
 
+  const { product } = recommendation;
+  const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  const thumbnailFileName = thumbnailFile?.filename;
+
   return (
     <>
       <Helmet>
@@ -26,7 +30,14 @@ export const Top: FC = () => {
       </Helmet>
       <Layout>
         <div>
-          <ProductHeroImage product={recommendation.product} title="今週のオススメ" />
+          {thumbnailFileName !== undefined ? (
+            <ProductHeroImage
+              imageFileName={thumbnailFileName}
+              productId={product.id}
+              productName={product.name}
+              title="今週のオススメ"
+            />
+          ) : null}
 
           <div className={styles.featureList()}>
             {features.map((featureSection) => {

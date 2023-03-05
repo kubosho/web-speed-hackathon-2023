@@ -28,6 +28,10 @@ export const OrderComplete: FC = () => {
     return null;
   }
 
+  const { product } = recommendation;
+  const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  const thumbnailFileName = thumbnailFile?.filename;
+
   return (
     <>
       <Helmet>
@@ -53,7 +57,14 @@ export const OrderComplete: FC = () => {
 
             <div className={styles.recommended()}>
               <h2 className={styles.recommendedHeading()}>こちらの商品もオススメです</h2>
-              <ProductHeroImage product={recommendation.product} title={recommendation.product.name} />
+              {thumbnailFileName !== undefined ? (
+                <ProductHeroImage
+                  imageFileName={thumbnailFileName}
+                  productId={product.id}
+                  productName={product.name}
+                  title={product.name}
+                />
+              ) : null}
             </div>
 
             <div className={styles.backToTopButtonWrapper()}>
