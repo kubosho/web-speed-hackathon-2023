@@ -27,6 +27,7 @@ export const Top: FC = () => {
     <>
       <Helmet>
         <title>買えるオーガニック</title>
+        {thumbnailFileName !== undefined && <link as="image" href={thumbnailFileName} rel="preload" />}
       </Helmet>
       <Layout>
         <div>

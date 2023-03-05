@@ -42,6 +42,7 @@ export const OrderComplete: FC = () => {
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=fallback&text=このサイトは架空のサイトであり、商品が発送されることはありません"
           rel="stylesheet"
         />
+        {thumbnailFileName !== undefined && <link as="image" href={thumbnailFileName} rel="preload" />}
       </Helmet>
       <Layout>
         <WidthRestriction>
